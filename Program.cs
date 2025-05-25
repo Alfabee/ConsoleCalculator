@@ -6,6 +6,8 @@ class Program
     {
         ICalculator calc = new Calculator();
         ILogger logger = new Logger();
+        IValidator validator = new Validator();
+
 
         Console.WriteLine("Введіть перше число:");
         int a = int.Parse(Console.ReadLine());
@@ -26,9 +28,18 @@ class Program
         Console.WriteLine($"Добуток: {prod}");
         logger.Log($"Multiply: {a} * {b} = {prod}");
 
-        int quot = calc.Divide(a, b);
-        Console.WriteLine($"Частка: {quot}");
-        logger.Log($"Divide: {a} / {b} = {quot}");
+        if (validator.IsValidDivision(b))
+        {
+            int quot = calc.Divide(a, b);
+            Console.WriteLine($"Частка: {quot}");
+            logger.Log($"Divide: {a} / {b} = {quot}");
+        }
+        else
+        {
+            Console.WriteLine("Помилка: ділення на нуль неможливе.");
+            logger.Log($"Divide: {a} / {b} — помилка ділення на 0");
+        }
+
 
     }
 }
