@@ -1,1 +1,12 @@
-﻿
+﻿# Visual Studio
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.vcxproj.user
+*.db
+
+# Інше
+*.log
+log.txt
